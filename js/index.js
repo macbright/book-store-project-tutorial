@@ -1,7 +1,6 @@
 
-
+import { bookList } from "./bookLists.js"
 // BOOK STORE PROJECT
-
 // 1. CREATE THE MAIN PAGE 
 // 2. THE ADD BOOK BUTTON THAT ADDS A BOOK TO OUR STORE
 // 3. RENDER THE BOOKS ON THE MAIN PAGE
@@ -11,18 +10,32 @@
 
 
 const btn = document.getElementsByClassName("add-book")[0];
+const displayForm = document.getElementsByClassName('form-section')[0];
+const closeBtn = document.getElementById('closeBtn');
 
-console.log("btn: ", btn)
+console.log("books: ", bookList)
 
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const displayForm = document.getElementsByClassName('form-section')[0];
-    const button = document.createElement("button")
-    button.innerText = "TESTING"
-    displayForm.appendChild(button)
-    console.log(displayForm)
-    displayForm.style.display = "block"
-})
+function display() {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        displayForm.style.display = "block";
+    })
+}
+function closeByWindow() {
+    window.addEventListener('click', (e) => {
+        if(e.target == displayForm) {
+            displayForm.style.display = "none"; 
+        }
+    })
+}
+function closeDisplay() {
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        displayForm.style.display = "none"; 
+    })
+}
 
 
-
+display()
+closeDisplay()
+closeByWindow()

@@ -6,13 +6,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" type="text/css" />
 </head>
-<body>
+<body id="body">
     <section class="heading"> 
         <h1> Book Store Project </h1>
         <button class="add-book"> Add Book </button>
     </section>
     <section class="form-section">
-        <form>
+        <form class="form">
             <h3> Add Book</h3>
             <div>
                 <label> Title</label>
@@ -57,13 +57,16 @@
                 />
             </div>
             <div class="button-div">
-                <button class="submit"> Submit </button>
-                <button class="close"> Close </button>
+                <button class="submit" id="submitBtn"> Submit </button>
+                <button class="close" id="closeBtn"> Close </button>
             </div>
        
         </form>
     </section>
 
-    <script src="./js/index.js"> </script>
+
+
+
+    <script src="./js/index.js" type="module"> </script>
 </body>
 </html>
