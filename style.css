@@ -103,3 +103,51 @@ body {
     cursor: pointer;
     margin-right: 30px;
 }
+
+
+#booksSection {
+    margin: 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+#booksSection div {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#booksSection div img {
+    width: 100%;
+}
+
+#booksSection div h5 {
+    font-size: 26px;
+    color: #FF5733;
+    margin: 14px 0px;
+}
+
+#booksSection div p {
+    font-size: 18px;
+ 
+}
+
+.deleteBook{
+     background-color:  red;
+     color: #fff;
+     padding: 10px 20px;
+     margin-left: 25px;
+     border: none;
+     font-size: 20px;
+     cursor: pointer;
+}
+
+.hasRead {
+    background-color:  red;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}

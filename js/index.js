@@ -1,5 +1,6 @@
 
-import { bookList } from "./bookLists.js"
+import { bookList } from "./bookLists.js";
+import {renderBooks } from "./book.js"
 // BOOK STORE PROJECT
 // 1. CREATE THE MAIN PAGE 
 // 2. THE ADD BOOK BUTTON THAT ADDS A BOOK TO OUR STORE
@@ -13,7 +14,7 @@ const btn = document.getElementsByClassName("add-book")[0];
 const displayForm = document.getElementsByClassName('form-section')[0];
 const closeBtn = document.getElementById('closeBtn');
 
-console.log("books: ", bookList)
+
 
 function display() {
     btn.addEventListener('click', (e) => {
@@ -39,3 +40,4 @@ function closeDisplay() {
 display()
 closeDisplay()
 closeByWindow()
+renderBooks()
