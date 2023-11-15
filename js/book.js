@@ -16,30 +16,46 @@ export function generateId(){
 }
 
 
-function BookConstructor(title, author, pages, publisher, isbn, coverUrl, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.publisher = publisher;
-    this.isbn = isbn;
-    this.coverUrl = coverUrl;
-    this.readStatus = readStatus;
-    this.id = generateId()
+export function BookConstructor(title, author, pages, publisher, isbn, coverUrl, readStatus) {
+    
+
+    return {
+        title: title,
+        author: author,
+        pages: pages,
+        publisher: publisher,
+        isbn: isbn,
+        coverUrl: coverUrl,
+        readStatus: readStatus,
+        id: generateId()
+    }
 }
 
 function deleteBookFunc(id) {
-    console.log(books)
     books = books.filter((book) => book.id !== id)
-
+    let currentBook = document.getElementById(id)
+    currentBook.remove()
 }
 
+function changeReadStatus(id) {
+    let currentBook = document.getElementById(id)
+    let statusBtn = currentBook.children[6];
+    if(statusBtn.innerHTML === "Not Read"){
+        statusBtn.innerHTML = "Read"
+        statusBtn.style.backgroundColor = "green"
+    }else {
+        statusBtn.style.backgroundColor = "red"
+        statusBtn.innerHTML = "Not Read"
+    } 
+}
 
 
 export function renderBooks() {
     const booksSection = document.getElementById("booksSection");
     books.forEach((book) => {
         const bookDiv = document.createElement("div");
-       
+        bookDiv.id = book.id;
+     
         const image = document.createElement("img");
         image.src = book.coverUrl;
 
@@ -58,10 +74,6 @@ export function renderBooks() {
         const isbn = document.createElement("p");
         isbn.innerText = `ISBN:  ${book.isbn}`
 
-        const hasRead = document.createElement("button");
-        hasRead.innerText = "Not Read";
-        hasRead.classList.add("hasRead")
-
         const deleteBook = document.createElement("button");
         deleteBook.innerText = "Delete Book";
         
@@ -71,8 +83,32 @@ export function renderBooks() {
             deleteBookFunc(book.id)
         })
 
+        const hasRead = document.createElement("button");
+        hasRead.innerText = "Not Read";
+        hasRead.classList.add("hasRead")
+
+        hasRead.addEventListener('click', e => {
+            e.preventDefault();
+            changeReadStatus(book.id)
+        })
+
         bookDiv.append(image, title, author, pages, publisher, isbn, hasRead, deleteBook)
         booksSection.appendChild(bookDiv);
     })
 
+}
+
+export function addBook() {
+    let inputs = document.querySelectorAll("input")
+    let inputsValues = {};
+    inputs.forEach(input =>  {
+        inputsValues[input.name] = input.value
+    })
+    let { title, author, pages, publisher, isbn, coverUrl, readStatus } = inputsValues; 
+
+    let newBook = new BookConstructor(title, author, pages, publisher, isbn, coverUrl, readStatus)
+    
+    books.push(newBook)
+    console.log(books)
+    renderBooks()
 }

@@ -141,6 +141,7 @@ body {
      border: none;
      font-size: 20px;
      cursor: pointer;
+     border-radius: 8px;
 }
 
 .hasRead {
@@ -150,4 +151,5 @@ body {
     font-size: 20px;
     border: none;
     cursor: pointer;
+    border-radius: 8px;
 }
