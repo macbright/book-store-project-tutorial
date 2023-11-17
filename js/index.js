@@ -1,6 +1,6 @@
 
 import { bookList } from "./bookLists.js";
-import {renderBooks, BookConstructor, addBook } from "./book.js"
+import {renderBooks, BookConstructor, addBook, books } from "./book.js"
 // BOOK STORE PROJECT
 // 1. CREATE THE MAIN PAGE 
 // 2. THE ADD BOOK BUTTON THAT ADDS A BOOK TO OUR STORE
@@ -42,9 +42,10 @@ function closeDisplay() {
 document.getElementById("submitBtn").addEventListener('click', e => {
     e.preventDefault()
     addBook()
+
 })
 
 display()
 closeDisplay()
 closeByWindow()
-renderBooks()
+renderBooks(books)

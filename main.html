@@ -15,34 +15,40 @@
         <form class="form">
             <h3> Add Book</h3>
             <!-- title, author, pages, publisher, isbn, coverUrl, readStatus -->
+            <p id="errors"> </p>
             <div>
                 <label> Title</label>
                 <input type="text"  name="title"
                 placeholder="Enter the Book Title"
+                required
                 />
             </div>
             <div>
                 <label> Author</label>
                 <input type="text" name="author"
                 placeholder="Enter the Book Author"
+                required
                 />
             </div>
             <div>
                 <label> Pages</label>
-                <input type="text"  name="pages"
+                <input type="number"  name="pages"
                 placeholder="Enter the Book Number of pages"
+                required
                 />
             </div>
             <div>
                 <label> Publisher</label>
                 <input type="text" name="publisher"
                 placeholder="Enter the Book Publisher"
+            
                 />
             </div>
             <div>
                 <label> :ISBN</label>
                 <input type="text"  name="isbn"
                 placeholder="Enter the Book ISBN"
+                required
                 />
             </div>
             <div>
@@ -55,13 +61,14 @@
                 <label> Read Status</label>
                 <input type="text" name="readStatus"
                 placeholder="Enter read status 'READ OR NOT READ'"
+                required
                 />
             </div>
             <div class="button-div">
                 <button class="submit" id="submitBtn"> Submit </button>
                 <button class="close" id="closeBtn"> Close </button>
             </div>
-       
+        
         </form>
     </section>
     <section id="booksSection"> 

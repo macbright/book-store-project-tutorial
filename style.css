@@ -35,6 +35,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
+    
 }
 
 .form{
@@ -46,6 +47,7 @@ body {
     height: 100%;
     top: 10px;
     left: 35%;
+    /* overflow: scroll; */
 }
 
 
@@ -152,4 +154,8 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 8px;
+}
+
+#errors {
+    color: red;
 }

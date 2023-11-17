@@ -1,6 +1,9 @@
 import { bookList } from "./bookLists.js";
+import { checkEmptyInputs } from "./untils.js";
 
-let books = [...bookList];
+const displayForm = document.getElementsByClassName('form-section')[0];
+
+export let books = [...bookList];
 
 export function generateId(){
     let id;
@@ -49,9 +52,9 @@ function changeReadStatus(id) {
     } 
 }
 
-
-export function renderBooks() {
+export function renderBooks(books) {
     const booksSection = document.getElementById("booksSection");
+
     books.forEach((book) => {
         const bookDiv = document.createElement("div");
         bookDiv.id = book.id;
@@ -82,7 +85,6 @@ export function renderBooks() {
             e.preventDefault();
             deleteBookFunc(book.id)
         })
-
         const hasRead = document.createElement("button");
         hasRead.innerText = "Not Read";
         hasRead.classList.add("hasRead")
@@ -98,17 +100,36 @@ export function renderBooks() {
 
 }
 
+function clearInputs() {
+    let inputs = document.querySelectorAll("input")
+    inputs.forEach((input) => input.value = "")
+}
+
+
 export function addBook() {
     let inputs = document.querySelectorAll("input")
+    let errors = document.getElementById("errors")
     let inputsValues = {};
     inputs.forEach(input =>  {
         inputsValues[input.name] = input.value
     })
     let { title, author, pages, publisher, isbn, coverUrl, readStatus } = inputsValues; 
 
+    if(checkEmptyInputs(title, author, pages, publisher, isbn, coverUrl,
+         readStatus, errors ).length > 0) {
+        return 
+    }
+    
+    if(coverUrl === ""){
+        coverUrl = "https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
+    }
+    
     let newBook = new BookConstructor(title, author, pages, publisher, isbn, coverUrl, readStatus)
     
     books.push(newBook)
     console.log(books)
-    renderBooks()
+    renderBooks([newBook])
+    clearInputs()
+    displayForm.style.display = "none"
+   
 }
